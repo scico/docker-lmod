@@ -9,7 +9,7 @@ The [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) 
 To run a centos 7 container with Lmod 
 
 ```
-$ docker run -ti docker.io/scico/lmod bash
+$ docker run -ti docker.io/scico/easylmod bash
 ```
 
 The image is, however, a base image and to be used to create a:
