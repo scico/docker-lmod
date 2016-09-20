@@ -1,5 +1,5 @@
-lmod:centos7
-============
+easylmod
+========
 
 A docker container with TACCs environmental modules system Lmod.   
 
@@ -9,7 +9,7 @@ The [Lmod](https://www.tacc.utexas.edu/research-development/tacc-projects/lmod) 
 To run a centos 7 container with Lmod 
 
 ```
-$ docker run -ti docker.io/scico/easylmod bash
+$ docker run -ti docker.io/scico/easylmod:centos7 bash
 ```
 
 The image is, however, a base image and to be used to create a:
