@@ -12,7 +12,7 @@ RUN  yum -y install epel-release && yum -y update && yum -y install git tar whic
 RUN useradd -u 1000 -d /home/apps apps && usermod -a -G wheel apps && echo '%wheel ALL=(ALL)       NOPASSWD: ALL'>>/etc/sudoers
 
 
-RUN mkdir -p ${LMODDIR}/build && chown -R apps.apps ${LMODDIR} &&
+RUN mkdir -p ${LMODDIR}/build && chown -R apps.apps ${LMODDIR}
 
 USER apps
 WORKDIR ${LMODDIR}/build
