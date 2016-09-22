@@ -6,10 +6,10 @@ ENV LMODDIR /opt/apps
 MAINTAINER Lars Melwyn <melwyn (at) scico.io>
 
 RUN  yum -y install epel-release && yum -y update && yum -y install git tar which bzip2 xz \
-     epel-release make automake unzip  patch python-keyring lua lua-devel lua-posix lua-filesystem tcl \
+     bash-completion make automake unzip  patch python-keyring lua lua-devel lua-posix lua-filesystem tcl \
      iproute gcc gcc-c++ zlib-devel openssl-devel sudo &&  yum clean all
 
-RUN useradd -u 1000 -d ${LMODDIR} apps && usermod -a -G wheel apps && sed -i -e '/wheel/s/#//g' /etc/sudoers
+RUN useradd -u 1000 -d /home/apps apps && usermod -a -G wheel apps && echo '%wheel ALL=(ALL)       NOPASSWD: ALL'>>/etc/sudoers
 
 USER apps
 RUN mkdir -p ${LMODDIR}/build
@@ -24,6 +24,6 @@ RUN  ln -s ${LMODDIR}/software/Lmod/lmod/lmod/init/profile /etc/profile.d/module
      ln -s ${LMODDIR}/software/Lmod/lmod/lmod/init/cshrc /etc/profile.d/modules.csh
 
 USER apps 
-WORKDIR ${LMODDIR}
+WORKDIR /home/apps
 
 CMD /bin/bash
