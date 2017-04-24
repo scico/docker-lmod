@@ -16,7 +16,7 @@ RUN mkdir -p ${LMODDIR}/.build && chown -R apps.apps ${LMODDIR}
 
 USER apps
 WORKDIR ${LMODDIR}/.build
-RUN curl -LO http://github.com/TACC/Lmod/archive/${LMOD_VER}.tar.gz && mv ${LMODDIR}/build/${LMOD_VER}.tar.gz ${LMODDIR}/.build/Lmod-${LMOD_VER}.tar.gz && tar xvf Lmod-${LMOD_VER}.tar.gz
+RUN curl -LO http://github.com/TACC/Lmod/archive/${LMOD_VER}.tar.gz && mv ${LMODDIR}/.build/${LMOD_VER}.tar.gz ${LMODDIR}/.build/Lmod-${LMOD_VER}.tar.gz && tar xvf Lmod-${LMOD_VER}.tar.gz
 
 WORKDIR ${LMODDIR}/.build/Lmod-${LMOD_VER}
 RUN ./configure --prefix=${LMODDIR}/software/Lmod && make install 
