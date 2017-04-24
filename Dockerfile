@@ -12,13 +12,13 @@ RUN  yum -y install epel-release && yum -y update && yum -y install git tar whic
 RUN useradd -u 1000 -d /home/apps apps && usermod -a -G wheel apps && echo '%wheel ALL=(ALL)       NOPASSWD: ALL'>>/etc/sudoers
 
 
-RUN mkdir -p ${LMODDIR}/build && chown -R apps.apps ${LMODDIR}
+RUN mkdir -p ${LMODDIR}/.build && chown -R apps.apps ${LMODDIR}
 
 USER apps
-WORKDIR ${LMODDIR}/build
-RUN curl -LO http://github.com/TACC/Lmod/archive/${LMOD_VER}.tar.gz && mv ${LMODDIR}/build/${LMOD_VER}.tar.gz ${LMODDIR}/build/Lmod-${LMOD_VER}.tar.gz && tar xvf Lmod-${LMOD_VER}.tar.gz
+WORKDIR ${LMODDIR}/.build
+RUN curl -LO http://github.com/TACC/Lmod/archive/${LMOD_VER}.tar.gz && mv ${LMODDIR}/build/${LMOD_VER}.tar.gz ${LMODDIR}/.build/Lmod-${LMOD_VER}.tar.gz && tar xvf Lmod-${LMOD_VER}.tar.gz
 
-WORKDIR ${LMODDIR}/build/Lmod-${LMOD_VER}
+WORKDIR ${LMODDIR}/.build/Lmod-${LMOD_VER}
 RUN ./configure --prefix=${LMODDIR}/software/Lmod && make install 
 
 USER root
