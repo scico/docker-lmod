@@ -5,9 +5,10 @@ ENV LMODDIR /opt/apps
 
 MAINTAINER Lars Melwyn <melwyn (at) scico.io>
 
-RUN  yum -y install epel-release && yum -y update && yum -y install git tar which bzip2 xz \
-     bash-completion make automake unzip  patch python-keyring lua lua-devel lua-posix lua-filesystem tcl \
-     iproute gcc gcc-c++ zlib-devel openssl-devel sudo &&  yum clean all
+RUN  yum -y install epel-release && yum -y update && yum -y install git tar which bzip2 xz bash-completion make \
+     automake unzip  patch python-keyring lua lua-devel lua-posix lua-filesystem tcl iproute gcc gcc-c++ zlib-devel \
+     openssl-devel sudo yum-plugin-ovl python-setuptools unzip zlib-devel openssl-devel libibverbs-devel && \  
+     yum clean all && rm -rf /var/cache/yum
 
 RUN useradd -u 1000 -d /home/apps apps && usermod -a -G wheel apps && echo '%wheel ALL=(ALL)       NOPASSWD: ALL'>>/etc/sudoers
 
