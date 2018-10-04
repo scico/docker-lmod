@@ -1,6 +1,6 @@
 FROM centos:7.5.1804
 
-ENV LMOD_VER 7.8.2
+ENV LMOD_VER 7.8.6
 ENV LMODDIR /opt/apps
 
 MAINTAINER Lars Melwyn <melwyn (at) scico.io>
